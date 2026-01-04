@@ -7,6 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -175,7 +176,17 @@ public class TrialChamber implements ModInitializer, ClientModInitializer {
         }
     }
 
+    /**
+     * Mengecek apakah ItemStack adalah pickaxe yang valid (vanilla atau dari mod)
+     * Menggunakan ItemTags.PICKAXES untuk mendeteksi semua pickaxe termasuk dari mod
+     */
     public static boolean isValidPickaxe(ItemStack itemStack) {
+        // Cek apakah item memiliki tag pickaxe (mendukung pickaxe dari mod)
+        if (itemStack.isIn(ItemTags.PICKAXES)) {
+            return true;
+        }
+
+        // Fallback: cek vanilla pickaxe secara manual sebagai backup
         return itemStack.isOf(Items.WOODEN_PICKAXE) ||
                 itemStack.isOf(Items.STONE_PICKAXE) ||
                 itemStack.isOf(Items.IRON_PICKAXE) ||

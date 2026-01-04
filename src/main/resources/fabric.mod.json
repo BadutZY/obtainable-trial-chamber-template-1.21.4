@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "trial-chamber",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"name": "Obtainable Trial Chamber",
 	"description": "Make blocks in the Trial Chamber like Vault and Trial Spawner Obtainable",
 	"authors": [
